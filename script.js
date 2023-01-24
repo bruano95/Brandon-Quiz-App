@@ -85,9 +85,10 @@ submitBtn.addEventListener('click', () => {
         if(currentQuiz < quizData.length) {
             loadQuiz()
         } else {
-            currentQuiz.innerHtml = `
+            quiz.innerHTML = `
             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-            `
+            
+            <a href="/index.html">Add to Leaderboard</a>`
         }
     }
 })
