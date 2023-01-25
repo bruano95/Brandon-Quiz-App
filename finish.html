@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <main id="end" class="flex-center flex-column">
+            <h1 id="finalScore"></h1>
+            <form class="end-form-container">
+                <h2 id="end-text">Enter your information below to save your score!</h2>
+                <input type="text" name="name" id="username" placeholder="Enter your name">
+                <input type="text" name="name" id="score-total" placeholder="Score">
+                <button class="button" id="saveButton" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
+            </form>
+            <a href="/game.html" class="button">Play Again</a>
+            <a href="/index.html" class="button">Return to Start</a>
+        </main>
+    </main>
+    <main class="card">
+        <h2>Last Saved Score</h2>
+        <p>Player Name: <span id="saved-name"></span></p>
+        <p>Score: <span id="saved-score"></span></p>
+    </main>
+    <script src="finish.js"></script>
+</body>
+</html>

@@ -14,7 +14,8 @@ body{
     margin: 0;
 }
 
-.quiz_container{
+.quiz_container,
+.score_card{
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px black;
@@ -76,4 +77,9 @@ button:focus{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+a.button {
+    margin: 235px;
+    color: red;
 }

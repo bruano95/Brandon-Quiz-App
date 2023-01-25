@@ -41,7 +41,7 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitBtn = document.getElementById('submit');
-const timeCount = document.querySelector(".timer_sec")
+const displayTime = document.querySelector("countdown")
 
 let currentQuiz = 0
 let score = 0
@@ -60,6 +60,18 @@ function loadQuiz() {
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
 }
+time = question.length * 4;
+intervalIF = setInterval(countdown, 1000);
+
+function countdown() {
+    time--;
+    displayTime();
+    if (time < 1) {
+      endQuiz();
+    }
+}
+
+
 
 function deselectAnswers() {
     answerEls.forEach(answerEl => answerEls.checked = false)
@@ -87,8 +99,8 @@ submitBtn.addEventListener('click', () => {
         } else {
             quiz.innerHTML = `
             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-            
-            <a href="/index.html">Add to Leaderboard</a>`
+            <a href="/finish.html" class="button">Leaderboard`
         }
     }
 })
+
