@@ -41,7 +41,7 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitBtn = document.getElementById('submit');
-const displayTime = document.querySelector("countdown")
+const displayTime = document.querySelector("countdown");
 
 let currentQuiz = 0
 let score = 0
@@ -60,17 +60,35 @@ function loadQuiz() {
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
 }
-time = question.length * 4;
-intervalIF = setInterval(countdown, 1000);
 
 function countdown() {
-    time--;
-    displayTime();
-    if (time < 1) {
-      endQuiz();
-    }
-}
+    var timeLeft = 60;
+  
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+      // As long as the `timeLeft` is greater than 1
+      if (timeLeft > 1) {
+        // Set the `textContent` of `timerEl` to show the remaining seconds
+        displayTime.textContent = timeLeft + ' seconds remaining';
+        // Decrement `timeLeft` by 1
+        timeLeft--;
+        console(timeLeft);
+      } else if (timeLeft === 1) {
+        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+        displayTime.textContent = timeLeft + ' second remaining';
+        timeLeft--;
+      } else {
+        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+        displayTime.textContent = '';
+        // Use `clearInterval()` to stop the timer
+        clearInterval(timeInterval);
+        // Call the `displayMessage()` function
+        //displayMessage();
+      }
+    }, 1000);
+  }
 
+countdown()
 
 
 function deselectAnswers() {
