@@ -5,7 +5,9 @@ An application run by HTML, CSS, and JavaScript to exhibit a timed multiple choi
 This project is a quiz application ran by HTML, CSS, and JavaScript. The code was written from scratch and resembles a baseball trivia game. The HTML is written with correct semantics and the CSS is properly formatted. This trivia game is meant for anyone to play but is especially fun for those that enjoy the sport of baseball. After taking the quiz a leaderboard option is available if the user is wishing to test their knowledge in the future or against other players.
 Link to the project: https://bruano95.github.io/Brandon-Quiz-App/
 
-![Alt text](Assets/images/PW-generator.png)
+![Alt text](Assets/images/Baseball-Pop-Quiz.png)
+![Alt text](Assets/images/Baseball-Pop-Quiz2.png)
+![Alt text](Assets/images/Baseball-Pop-Quiz3.png)
 
 # Getting Started
 
