@@ -41,7 +41,7 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitBtn = document.getElementById('submit');
-const displayTime = document.querySelector("countdown");
+const displayTime = document.getElementById("countdown");
 
 let currentQuiz = 0
 let score = 0
@@ -72,7 +72,6 @@ function countdown() {
         displayTime.textContent = timeLeft + ' seconds remaining';
         // Decrement `timeLeft` by 1
         timeLeft--;
-        console(timeLeft);
       } else if (timeLeft === 1) {
         // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
         displayTime.textContent = timeLeft + ' second remaining';
