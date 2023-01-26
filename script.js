@@ -1,3 +1,4 @@
+//Questions array
 var quizData = [
     {
         question: 'Who is the Single Season Homerun leader?',
@@ -33,6 +34,7 @@ var quizData = [
     }
 ];
 
+//constants attached to elements
 const quiz = document.getElementById('quiz');
 const answerEls = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
@@ -46,6 +48,7 @@ const displayTime = document.getElementById("countdown");
 let currentQuiz = 0
 let score = 0
 
+//start quiz
 loadQuiz()
 
 function loadQuiz() {
@@ -60,40 +63,57 @@ function loadQuiz() {
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
 }
-
+// timer function
 function countdown() {
     var timeLeft = 60;
-  
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+
     var timeInterval = setInterval(function () {
-      // As long as the `timeLeft` is greater than 1
+
       if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
+
         displayTime.textContent = timeLeft + ' seconds remaining';
-        // Decrement `timeLeft` by 1
+
         timeLeft--;
       } else if (timeLeft === 1) {
-        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+
         displayTime.textContent = timeLeft + ' second remaining';
         timeLeft--;
       } else {
-        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+
         displayTime.textContent = '';
-        // Use `clearInterval()` to stop the timer
+
         clearInterval(timeInterval);
-        // Call the `displayMessage()` function
-        //displayMessage();
+        sendMessage();
       }
     }, 1000);
   }
 
+  function sendMessage() {
+    timeEl.textContent = " ";
+    if(answer) {
+        if(answer === quizData[currentQuiz].correct) {
+            score++
+        }
+        currentQuiz++
+        if(currentQuiz < quizData.length) {
+            loadQuiz()
+        } else {
+            quiz.innerHTML = `
+            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+            <a href="/finish.html" class="button">Leaderboard`
+        }
+    }
+  
+  }
+
 countdown()
 
-
+//deslecting answers to check for correctness
 function deselectAnswers() {
     answerEls.forEach(answerEl => answerEls.checked = false)
 }
 
+//function to check if answers are correct
 function getSelected() {
     let answer
     answerEls.forEach(answerEls => {
@@ -104,6 +124,7 @@ function getSelected() {
     return answer
 }
 
+//finished quiz submit button function/ action
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
     if(answer) {

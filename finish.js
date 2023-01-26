@@ -1,36 +1,44 @@
-var saveButton = document.getElementById("#saveButton");
-var player = document.getElementById("#username");
-var totalScore = document.getElementById("#score-total");
+var saveButton = document.querySelector("#saveButton");
+var playerInput = document.querySelector("#username");
+var scoreInput = document.querySelector("#score-total");
+var msgDiv = document.querySelector("#msg");
+var userUsernameSpan = document.querySelector("#saved-name");
+var userScoreSpan = document.querySelector("#saved-score");
 
-function saveLastScore(){   
-    var quizScore = {
-      player: player.value.trim(),
-      totalScore: totalScore.value.trim(),
-    };
-    
-    localStorage.setItem("quizScore", JSON.stringify(quizScore));
-    renderMessage();
-}   
-function renderLastScore() {
-  var lastScore = JSON.parse(localStorage.getItem("quizScore"));
-  if (lastScore !== null) {
-  document.getElementById("saved-name").innerHTML = lastScore.player;
-  document.getElementById("saved-score").innerHTML = lastScore.totalScore;
-  } else {
+renderLastRegistered();
+
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
+
+function renderLastRegistered() {
+  var username = localStorage.getItem("username");
+  var score = localStorage.getItem("score");
+
+  if (!username || !score) {
     return;
   }
+
+  userUsernameSpan.textContent = username;
+  userScoreSpan.textContent = score;
 }
 
 saveButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    saveLastScore();
-});
+  event.preventDefault();
 
-function renderMessage() {
-    var lastScore = JSON.parse(localStorage.getItem("playerScore"));
-    if (lastScore !== null) {
-      document.querySelector(".message").textContent = lastScore.player + 
-      " scored " + lastGrade.grade
-    }
+  var username = document.querySelector("#username").value;
+  var score = document.querySelector("#score-total").value;
+
+  if (username === "") {
+    displayMessage("error", "Name cannot be blank");
+  } else if (score === "") {
+    displayMessage("error", "Score cannot be blank");
+  } else {
+    displayMessage("success", "Submitted successfully");
+
+    localStorage.setItem("", );
+    localStorage.setItem("", );
+    renderLastRegistered();
   }
-  
+});

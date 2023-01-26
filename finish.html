@@ -15,13 +15,14 @@
                 <h2 id="end-text">Enter your information below to save your score!</h2>
                 <input type="text" name="name" id="username" placeholder="Enter your name">
                 <input type="text" name="name" id="score-total" placeholder="Score">
-                <button class="button" id="saveButton" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
+                <button class="button" id="saveButton" type="submit">Save</button>
+                <div id="msg"></div>
             </form>
             <a href="/game.html" class="button">Play Again</a>
             <a href="/index.html" class="button">Return to Start</a>
         </main>
     </main>
-    <main class="card">
+    <main class="Leaderboard-card">
         <h2>Last Saved Score</h2>
         <p>Player Name: <span id="saved-name"></span></p>
         <p>Score: <span id="saved-score"></span></p>

@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 
+/*appearance for the items within the body */
 body{
     background-color: lightgray;
     font-family: 'Courier New', Courier, monospace;
@@ -14,8 +15,7 @@ body{
     margin: 0;
 }
 
-.quiz_container,
-.score_card{
+.quiz_container{
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px black;
@@ -23,10 +23,12 @@ body{
     overflow: hidden;
 }
 
+/* quiz header appearance */
 .quiz-header{
     padding: 4rem;
 }
 
+/*text appearance for the questions */
 h2{
     padding: 1rem;
     text-align: center;
@@ -43,13 +45,14 @@ ul li{
     margin: 1rem 0;
 }
 
+/* timer appearance */
 #countdown {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     margin-left: 275px;
 }
 
-
+/*button functions and appearance */
 button{
     background-color: lightgreen;
     color: black;
@@ -71,14 +74,7 @@ button:focus{
     background-color: lightblue;
 }
 
-.timer, .timer_sec{
-    margin: 5px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/*link appearance to the leaderboard */
 a.button {
     margin: 235px;
     color: red;
