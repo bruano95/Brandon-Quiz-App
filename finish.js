@@ -1,9 +1,9 @@
-var saveButton = document.querySelector("#saveButton");
-var playerInput = document.querySelector("#username");
-var scoreInput = document.querySelector("#score-total");
-var msgDiv = document.querySelector("#msg");
-var userUsernameSpan = document.querySelector("#saved-name");
-var userScoreSpan = document.querySelector("#saved-score");
+var saveButton = document.querySelector("saveButton");
+var playerInput = document.querySelector("username");
+var scoreInput = document.querySelector("score-total");
+var msgDiv = document.querySelector("msg");
+var userUsernameSpan = document.querySelector("saved-name");
+var userScoreSpan = document.querySelector("saved-score");
 
 renderLastRegistered();
 
@@ -27,8 +27,8 @@ function renderLastRegistered() {
 saveButton.addEventListener("click", function(event) {
   event.preventDefault();
 
-  var username = document.querySelector("#username").value;
-  var score = document.querySelector("#score-total").value;
+  var username = document.querySelector("#name").value;
+  var score = document.querySelector("#scored").value;
 
   if (username === "") {
     displayMessage("error", "Name cannot be blank");
@@ -37,8 +37,8 @@ saveButton.addEventListener("click", function(event) {
   } else {
     displayMessage("success", "Submitted successfully");
 
-    localStorage.setItem("", );
-    localStorage.setItem("", );
+    localStorage.setItem("name", score);
+    localStorage.setItem("score", score);
     renderLastRegistered();
   }
 });
