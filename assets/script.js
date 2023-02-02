@@ -106,7 +106,7 @@ function countdown() {
   
   }
 
-countdown()
+countdown();
 
 //deslecting answers to check for correctness
 function deselectAnswers() {
@@ -122,6 +122,15 @@ function getSelected() {
         }
     })
     return answer
+}
+
+function quizEnd() {
+    clearInterval(timerId);
+    var endScreenEl = document.getElementById("quiz-end");
+    endScreenEl.removeAttribute("class");
+    var finalScoreEl = document.getElementById("score-final");
+    finalScoreEl.textContent = time;
+    questionsEl.setAttribute("class", "hide");
 }
 
 //finished quiz submit button function/ action
