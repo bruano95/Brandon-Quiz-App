@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finish</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <main class="container">
@@ -13,20 +13,18 @@
             <h1 id="finalScore"></h1>
             <form class="end-form-container">
                 <h2 id="end-text">Enter your information below to save your score!</h2>
-                <input type="name" name="name" id="name" placeholder="Enter your name">
+                <input type="name" name="name" id="name" placeholder="Your initials">
                 <input type="score" name="score" id="scored" placeholder="Score">
                 <main id="msg"></main>
             </form>
-                            <button class="button" id="saveButton" type="submit">Save</button>
-            <a href="/game.html" class="button">Play Again</a>
-            <a href="/index.html" class="button">Return to Start</a>
+            <button class="button" id="saveButton" type="submit">Save</button>
+            <a href="./game.html" class="button">Play Again</a>
+            <a href="./index.html" class="button">Return to Start</a>
+            <h2>Saved Scores</h2>
+            <p><strong>Player Name:</strong> <span id="saved-name"></span></p>
+            <p><strong>Score:</strong> <span id="saved-score"></span></p>
         </main>
     </main>
-    <main class="Leaderboard-card">
-        <h2>Last Saved Score</h2>
-        <p><strong>Player Name:</strong> <span id="saved-name"></span></p>
-        <p><strong>Score:</strong> <span id="saved-score"></span></p>
-    </main>
-    <script src="/assets/finish.js"></script>
+    <script src="./assets/finish.js"></script>
 </body>
 </html>

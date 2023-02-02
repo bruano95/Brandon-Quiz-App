@@ -6,7 +6,6 @@ This project is a quiz application ran by HTML, CSS, and JavaScript. The code wa
 Link to the project: https://bruano95.github.io/Brandon-Quiz-App/
 
 ![Alt text](Assets/images/Baseball-Pop-Quiz.png)
-![Alt text](Assets/images/Baseball-Pop-Quiz2.png)
 ![Alt text](Assets/images/Baseball-Pop-Quiz3.png)
 
 # Getting Started

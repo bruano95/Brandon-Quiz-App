@@ -1,9 +1,9 @@
-var emailInput = document.querySelector("#email");
-var passwordInput = document.querySelector("#password");
-var signUpButton = document.querySelector("#sign-up");
+var nameInput = document.querySelector("#name");
+var scoreInput = document.querySelector("#scored");
+var saveButton = document.querySelector("#saveButton");
 var msgDiv = document.querySelector("#msg");
-var userEmailSpan = document.querySelector("#user-email");
-var userPasswordSpan = document.querySelector("#user-password");
+var userNameSpan = document.querySelector("#saved-name");
+var userScoreSpan = document.querySelector("#saved-score");
 
 
 renderLastRegistered();
@@ -14,32 +14,32 @@ function displayMessage(type, message) {
 }
 
 function renderLastRegistered() {
-  var email = localStorage.getItem("email");
-  var password = localStorage.getItem("password");
+  var name = localStorage.getItem("#name");
+  var score = localStorage.getItem("#scored");
 
-  if (!email || !password) {
+  if (!name || !score) {
     return;
   }
 
-  userEmailSpan.textContent = email;
-  userPasswordSpan.textContent = password;
+  userNameSpan.textContent = name;
+  userScoreSpan.textContent = score;
 }
 
-signUpButton.addEventListener("click", function(event) {
+saveButton.addEventListener("click", function(event) {
   event.preventDefault();
 
-  var email = document.querySelector("#email").value;
-  var password = document.querySelector("#password").value;
+  var name = document.querySelector("#name").value;
+  var score = document.querySelector("#scored").value;
 
-  if (email === "") {
-    displayMessage("error", "Email cannot be blank");
-  } else if (password === "") {
-    displayMessage("error", "Password cannot be blank");
+  if (name === "") {
+    displayMessage("error", "Initials cannot be blank");
+  } else if (score === "") {
+    displayMessage("error", "Score cannot be blank");
   } else {
     displayMessage("success", "Registered successfully");
 
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
+    localStorage.setItem("#name", name);
+    localStorage.setItem("#scored", score);
     renderLastRegistered();
   }
 });

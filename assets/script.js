@@ -54,7 +54,7 @@ loadQuiz()
 function loadQuiz() {
 
     deselectAnswers()
-
+    console.log(currentQuiz) 
     const currentQuizData = quizData[currentQuiz]
 
     questionEl.innerText = currentQuizData.question
@@ -63,9 +63,10 @@ function loadQuiz() {
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
 }
+var timeLeft = 60;
 // timer function
 function countdown() {
-    var timeLeft = 60;
+    
 
     var timeInterval = setInterval(function () {
 
@@ -83,27 +84,12 @@ function countdown() {
         displayTime.textContent = '';
 
         clearInterval(timeInterval);
-        sendMessage();
+        quiz.innerHTML = `
+        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+        <a href="./finish.html" class="button">Leaderboard`
+        //sendMessage();
       }
     }, 1000);
-  }
-
-  function sendMessage() {
-    timeEl.textContent = " ";
-    if(answer) {
-        if(answer === quizData[currentQuiz].correct) {
-            score++
-        }
-        currentQuiz++
-        if(currentQuiz < quizData.length) {
-            loadQuiz()
-        } else {
-            quiz.innerHTML = `
-            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-            <a href="/finish.html" class="button">Leaderboard`
-        }
-    }
-  
   }
 
 countdown();
@@ -124,30 +110,46 @@ function getSelected() {
     return answer
 }
 
-function quizEnd() {
-    clearInterval(timerId);
-    var endScreenEl = document.getElementById("quiz-end");
-    endScreenEl.removeAttribute("class");
-    var finalScoreEl = document.getElementById("score-final");
-    finalScoreEl.textContent = time;
-    questionsEl.setAttribute("class", "hide");
-}
-
 //finished quiz submit button function/ action
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
+    console.log(answer)
     if(answer) {
-        if(answer === quizData[currentQuiz].correct) {
-            score++
-        }
-        currentQuiz++
-        if(currentQuiz < quizData.length) {
-            loadQuiz()
+       
+        console.log(score)
+        console.log(currentQuiz)
+        console.log(quizData.length)
+        if(currentQuiz < quizData.length) { 
+            if(answer === quizData[currentQuiz].correct) {
+                console.log("inside correctanswerfunction")
+                score++
+                currentQuiz++
+                verifyLoadQuestion()
+            }
+            else {
+                console.log("insideelsestatement")
+                timeLeft = timeLeft - 10
+                currentQuiz++
+                verifyLoadQuestion()
+            }
+            
         } else {
             quiz.innerHTML = `
             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-            <a href="/finish.html" class="button">Leaderboard`
+            <a href="./finish.html" class="button">Leaderboard`
         }
     }
 })
 
+function verifyLoadQuestion(){
+    if(currentQuiz < quizData.length){
+
+        loadQuiz()
+    }else{
+        quiz.innerHTML = `
+        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+        <a href="./finish.html" class="button">Leaderboard</a>`
+    }
+}
+
+// function initialsPage()
