@@ -1,5 +1,5 @@
 //Questions array
-var quizData = [
+var quizQuestion = [
     {
         question: 'Who is the Single Season Homerun leader?',
         a: 'Sammy Sosa',
@@ -36,7 +36,7 @@ var quizData = [
 
 //constants attached to elements
 const quiz = document.getElementById('quiz');
-const answerEls = document.querySelectorAll('.answer');
+const responseEls = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
 const a_text = document.getElementById('a_text');
 const b_text = document.getElementById('b_text');
@@ -49,19 +49,19 @@ let currentQuiz = 0
 let score = 0
 
 //start quiz
-loadQuiz()
+startQuiz()
 
-function loadQuiz() {
+function startQuiz() {
 
-    deselectAnswers()
+    uncheckedResponse()
     console.log(currentQuiz) 
-    const currentQuizData = quizData[currentQuiz]
+    const currentQuizQuestion = quizQuestion[currentQuiz]
 
-    questionEl.innerText = currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
+    questionEl.innerText = currentQuizQuestion.question
+    a_text.innerText = currentQuizQuestion.a
+    b_text.innerText = currentQuizQuestion.b
+    c_text.innerText = currentQuizQuestion.c
+    d_text.innerText = currentQuizQuestion.d
 }
 var timeLeft = 60;
 // timer function
@@ -85,9 +85,8 @@ function countdown() {
 
         clearInterval(timeInterval);
         quiz.innerHTML = `
-        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+        <h2>You answered ${score}/${quizQuestion.length} questions correctly</h2>
         <a href="./finish.html" class="button">Leaderboard`
-        //sendMessage();
       }
     }, 1000);
   }
@@ -95,16 +94,16 @@ function countdown() {
 countdown();
 
 //deslecting answers to check for correctness
-function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEls.checked = false)
+function uncheckedResponse() {
+    responseEls.forEach(responseEl => responseEls.checked = false)
 }
 
 //function to check if answers are correct
-function getSelected() {
-    let answer
-    answerEls.forEach(answerEls => {
-        if(answerEls.checked) {
-            answer = answerEls.id
+function clickedAnswer() {
+    let answer 
+    responseEls.forEach(responseEls => {
+        if(responseEls.checked) {
+            answer = responseEls.id
         }
     })
     return answer
@@ -112,15 +111,15 @@ function getSelected() {
 
 //finished quiz submit button function/ action
 submitBtn.addEventListener('click', () => {
-    const answer = getSelected()
+    const answer = clickedAnswer()
     console.log(answer)
     if(answer) {
        
         console.log(score)
         console.log(currentQuiz)
-        console.log(quizData.length)
-        if(currentQuiz < quizData.length) { 
-            if(answer === quizData[currentQuiz].correct) {
+        console.log(quizQuestion.length)
+        if(currentQuiz < quizQuestion.length) { 
+            if(answer === quizQuestion[currentQuiz].correct) {
                 console.log("inside correctanswerfunction")
                 score++
                 currentQuiz++
@@ -135,19 +134,19 @@ submitBtn.addEventListener('click', () => {
             
         } else {
             quiz.innerHTML = `
-            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+            <h2>You answered ${score}/${quizQuestion.length} questions correctly</h2>
             <a href="./finish.html" class="button">Leaderboard`
         }
     }
 })
 
 function verifyLoadQuestion(){
-    if(currentQuiz < quizData.length){
+    if(currentQuiz < quizQuestion.length){
 
-        loadQuiz()
+        startQuiz()
     }else{
         quiz.innerHTML = `
-        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+        <h2>You answered ${score}/${quizQuestion.length} questions correctly</h2>
         <a href="./finish.html" class="button">Leaderboard</a>`
     }
 }
