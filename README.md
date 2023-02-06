@@ -31,3 +31,4 @@ If the project/ web page is not running properly, please contact me through the 
 Brandon Ruano
 bruano@uw.edu
 github.com/bruano95
+with help/assistance from my tutor: Sachin Jhaveri
