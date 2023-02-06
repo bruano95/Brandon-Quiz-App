@@ -6,7 +6,7 @@ var quizQuestion = [
         b: 'Barry Bonds',
         c: 'Mark Mcquire',
         d: 'Ichiro',
-        correct: 'b'
+        correctAnswer: 'b'
     },
     {
         question: 'Who won the 2022 World Series?',
@@ -14,7 +14,7 @@ var quizQuestion = [
         b: 'New York Yankees',
         c: 'Los Angeles Dodgers',
         d: 'Houston Astros',
-        correct: 'd'
+        correctAnswer: 'd'
     },
     {
         question: 'What does RBI stand for?',
@@ -22,7 +22,7 @@ var quizQuestion = [
         b: 'Runners both in-play',
         c: 'Rare baseball information',
         d: 'None of the above',
-        correct: 'a'
+        correctAnswer: 'a'
     },
     {
         question: 'Who is the 2022 AL MVP?',
@@ -30,13 +30,13 @@ var quizQuestion = [
         b: 'Juan Soto',
         c: 'Aaron Judge',
         d: 'Mike Trout',
-        correct: 'c'
+        correctAnswer: 'c'
     }
 ];
 
 //constants attached to elements
 const quiz = document.getElementById('quiz');
-const answerEls = document.querySelectorAll('.answer');
+const answerList = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
 const a_answer = document.getElementById('a_answer');
 const b_answer = document.getElementById('b_answer');
@@ -96,15 +96,17 @@ countdown();
 
 //deslecting answers to check for correctness
 function uncheckedResponse() {
-    answerEls.forEach(answerEl => answerEls.checked = false)
-}
+    answerList.forEach(function(answerList) {
+        answerList.checked = false
+    })
+}    
 
 //function to check if answers are correct
 function checkedAnswer() {
     let response
-    answerEls.forEach(function(answerEls) {
-        if(answerEls.checked) {
-            response = answerEls.id
+    answerList.forEach(function(answerList) {
+        if(answerList.checked) {
+            response = answerList.id
         }
     })
     return response
@@ -120,17 +122,17 @@ submitBtn.addEventListener('click', () => {
         console.log(currentQuestion)
         console.log(quizQuestion.length)
         if(currentQuestion < quizQuestion.length) { 
-            if(response === quizQuestion[currentQuestion].correct) {
+            if(response === quizQuestion[currentQuestion].correctAnswer) {
                 console.log("inside correctanswerfunction")
-                score++
-                currentQuestion++
-                verifyLoadQuestion()
+                score++;
+                currentQuestion++;
+                verifyLoadQuestion();
             }
             else {
                 console.log("insideelsestatement")
-                timeLeft = timeLeft - 10
-                currentQuestion++
-                verifyLoadQuestion()
+                timeLeft = timeLeft - 10;
+                currentQuestion++;
+                verifyLoadQuestion();
             }
             
         } else {
