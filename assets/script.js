@@ -35,7 +35,7 @@ var quizQuestion = [
 ];
 
 //constants attached to elements
-const quiz = document.getElementById('quiz');
+const test = document.getElementById('quiz');
 const answerList = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
 const a_answer = document.getElementById('a_answer');
@@ -52,16 +52,14 @@ let score = 0
 startQuiz()
 
 function startQuiz() {
-
-    uncheckedResponse()
-    console.log(currentQuestion) 
-    const currentQuizQuestion = quizQuestion[currentQuestion]
-
-    questionEl.innerText = currentQuizQuestion.question
-    a_answer.innerText = currentQuizQuestion.a
-    b_answer.innerText = currentQuizQuestion.b
-    c_answer.innerText = currentQuizQuestion.c
-    d_answer.innerText = currentQuizQuestion.d
+    uncheckedResponse();
+    console.log(currentQuestion);
+    const currentQuizQuestion = quizQuestion[currentQuestion];
+    questionEl.innerText = currentQuizQuestion.question;
+    a_answer.innerText = currentQuizQuestion.a;
+    b_answer.innerText = currentQuizQuestion.b;
+    c_answer.innerText = currentQuizQuestion.c;
+    d_answer.innerText = currentQuizQuestion.d;
 }
 
 var timeLeft = 60;
@@ -85,7 +83,7 @@ function countdown() {
         displayTime.textContent = '';
 
         clearInterval(timeInterval);
-        quiz.innerHTML = `
+        test.innerHTML = `
         <h2>Your final score: ${score}/${quizQuestion.length}</h2>
         <a href="./finish.html" class="button">Leaderboard`
 
@@ -114,7 +112,7 @@ function checkedAnswer() {
 }
 
 //finished quiz submit button function/ action
-submitBtn.addEventListener('click', () => {
+submitBtn.addEventListener('click', function() {
     const response = checkedAnswer()
     console.log(response)
     if(response) {
@@ -137,7 +135,7 @@ submitBtn.addEventListener('click', () => {
             }
             
         } else {
-            quiz.innerHTML = `
+            test.innerHTML = `
             <h2>Your final score: ${score}/${quizQuestion.length}</h2>
             <a href="./finish.html" class="button">Leaderboard`
         }
@@ -149,7 +147,7 @@ function verifyLoadQuestion(){
 
         startQuiz()
     }else{
-        quiz.innerHTML = `
+        test.innerHTML = `
         <h2>Your final score: ${score}/${quizQuestion.length}</h2>
         <a href="./finish.html" class="button">Leaderboard</a>`
     }
