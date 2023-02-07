@@ -2,34 +2,34 @@
 var quizQuestion = [
     {
         question: 'Who is the Single Season Homerun leader?',
-        a: 'Sammy Sosa',
-        b: 'Barry Bonds',
-        c: 'Mark Mcquire',
-        d: 'Ichiro',
+        A: 'Sammy Sosa',
+        B: 'Barry Bonds',
+        C: 'Mark Mcquire',
+        D: 'Ichiro',
         correctAnswer: 'b'
     },
     {
         question: 'Who won the 2022 World Series?',
-        a: 'Seattle Mariners',
-        b: 'New York Yankees',
-        c: 'Los Angeles Dodgers',
-        d: 'Houston Astros',
+        A: 'Seattle Mariners',
+        B: 'New York Yankees',
+        C: 'Los Angeles Dodgers',
+        D: 'Houston Astros',
         correctAnswer: 'd'
     },
     {
         question: 'What does RBI stand for?',
-        a: 'Runs batted in',
-        b: 'Runners both in-play',
-        c: 'Rare baseball information',
-        d: 'None of the above',
+        A: 'Runs batted in',
+        B: 'Runners both in-play',
+        C: 'Rare baseball information',
+        D: 'None of the above',
         correctAnswer: 'a'
     },
     {
         question: 'Who is the 2022 AL MVP?',
-        a: 'Julio Rodriguez',
-        b: 'Juan Soto',
-        c: 'Aaron Judge',
-        d: 'Mike Trout',
+        A: 'Julio Rodriguez',
+        B: 'Juan Soto',
+        C: 'Aaron Judge',
+        D: 'Mike Trout',
         correctAnswer: 'c'
     }
 ];
@@ -38,10 +38,10 @@ var quizQuestion = [
 const test = document.getElementById('quiz');
 const answerList = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
-const a_answer = document.getElementById('a_answer');
-const b_answer = document.getElementById('b_answer');
-const c_answer = document.getElementById('c_answer');
-const d_answer = document.getElementById('d_answer');
+const optionA = document.getElementById('a_answer');
+const optionB = document.getElementById('b_answer');
+const optionC = document.getElementById('c_answer');
+const optionD = document.getElementById('d_answer');
 const submitBtn = document.getElementById('submit');
 const displayTime = document.getElementById("countdown");
 
@@ -56,10 +56,10 @@ function startQuiz() {
     console.log(currentQuestion);
     const currentQuizQuestion = quizQuestion[currentQuestion];
     questionEl.innerText = currentQuizQuestion.question;
-    a_answer.innerText = currentQuizQuestion.a;
-    b_answer.innerText = currentQuizQuestion.b;
-    c_answer.innerText = currentQuizQuestion.c;
-    d_answer.innerText = currentQuizQuestion.d;
+    optionA.innerText = currentQuizQuestion.A;
+    optionB.innerText = currentQuizQuestion.B;
+    optionC.innerText = currentQuizQuestion.C;
+    optionD.innerText = currentQuizQuestion.D;
 }
 
 var timeLeft = 60;
@@ -96,13 +96,11 @@ countdown();
 //deslecting answers to check for correctness
 function uncheckedResponse() {
     answerList.forEach(function(answerList) {
-        answerList.checked = false
     })
 }    
 
 //function to check if answers are correct
-function checkedAnswer() {
-    let response
+function checkedResponse() {
     answerList.forEach(function(answerList) {
         if(answerList.checked) {
             response = answerList.id
@@ -113,7 +111,7 @@ function checkedAnswer() {
 
 //finished quiz submit button function/ action
 submitBtn.addEventListener('click', function() {
-    const response = checkedAnswer()
+    const response = checkedResponse()
     console.log(response)
     if(response) {
        
@@ -142,7 +140,7 @@ submitBtn.addEventListener('click', function() {
     }
 })
 
-function verifyLoadQuestion(){
+function verifyLoadQuestion() {
     if(currentQuestion < quizQuestion.length){
 
         startQuiz()
