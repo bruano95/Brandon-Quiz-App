@@ -63,6 +63,7 @@ function startQuiz() {
     c_answer.innerText = currentQuizQuestion.c
     d_answer.innerText = currentQuizQuestion.d
 }
+
 var timeLeft = 60;
 // timer function
 function countdown() {
