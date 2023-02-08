@@ -1,35 +1,19 @@
-//Questions array
+//Questions and answers array
 var quizQuestion = [
     {
-        question: 'Who is the Single Season Homerun leader?',
-        A: 'Sammy Sosa',
-        B: 'Barry Bonds',
-        C: 'Mark Mcquire',
-        D: 'Ichiro',
+        question: 'Who is the Single Season Homerun leader?', A: 'Sammy Sosa', B: 'Barry Bonds', C: 'Mark Mcquire', D: 'Ichiro',
         correctAnswer: 'b'
     },
     {
-        question: 'Who won the 2022 World Series?',
-        A: 'Seattle Mariners',
-        B: 'New York Yankees',
-        C: 'Los Angeles Dodgers',
-        D: 'Houston Astros',
+        question: 'Who won the 2022 World Series?', A: 'Seattle Mariners', B: 'New York Yankees', C: 'Los Angeles Dodgers', D: 'Houston Astros',
         correctAnswer: 'd'
     },
     {
-        question: 'What does RBI stand for?',
-        A: 'Runs batted in',
-        B: 'Runners both in-play',
-        C: 'Rare baseball information',
-        D: 'None of the above',
+        question: 'What does RBI stand for?', A: 'Runs batted in', B: 'Runners both in-play', C: 'Rare baseball information', D: 'None of the above',
         correctAnswer: 'a'
     },
     {
-        question: 'Who is the 2022 AL MVP?',
-        A: 'Julio Rodriguez',
-        B: 'Juan Soto',
-        C: 'Aaron Judge',
-        D: 'Mike Trout',
+        question: 'Who is the 2022 AL MVP?', A: 'Julio Rodriguez', B: 'Juan Soto', C: 'Aaron Judge', D: 'Mike Trout',
         correctAnswer: 'c'
     }
 ];
@@ -38,6 +22,7 @@ var quizQuestion = [
 const test = document.getElementById('quiz');
 const answerList = document.querySelectorAll('.answer');
 const questionEl = document.getElementById('question');
+// answer options to store into location of html
 const optionA = document.getElementById('a_answer');
 const optionB = document.getElementById('b_answer');
 const optionC = document.getElementById('c_answer');
@@ -45,10 +30,11 @@ const optionD = document.getElementById('d_answer');
 const submitBtn = document.getElementById('submit');
 const displayTime = document.getElementById("countdown");
 
+// sets the starting question at 0 and the starting score at 0
 let currentQuestion = 0
 let score = 0
 
-//start quiz
+//start quiz with correct question and answers to appear
 startQuiz()
 
 function startQuiz() {
@@ -56,12 +42,14 @@ function startQuiz() {
     console.log(currentQuestion);
     const currentQuizQuestion = quizQuestion[currentQuestion];
     questionEl.innerText = currentQuizQuestion.question;
+    // this allows for the text from each answer to appear on the quiz
     optionA.innerText = currentQuizQuestion.A;
     optionB.innerText = currentQuizQuestion.B;
     optionC.innerText = currentQuizQuestion.C;
     optionD.innerText = currentQuizQuestion.D;
 }
 
+// timer starts at 60 seconds
 var timeLeft = 60;
 // timer function
 function countdown() {
@@ -82,6 +70,8 @@ function countdown() {
 
         displayTime.textContent = '';
 
+        // at the end of timer the game ends and provides a score
+
         clearInterval(timeInterval);
         test.innerHTML = `
         <h2>Your final score: ${score}/${quizQuestion.length}</h2>
@@ -93,39 +83,41 @@ function countdown() {
 
 countdown();
 
-//deslecting answers to check for correctness
+//function allows for the answers to display
 function uncheckedResponse() {
     answerList.forEach(function(answerList) {
     })
 }    
 
-//function to check if answers are correct
+//function allows for checked answers to supply a response
 function checkedResponse() {
     answerList.forEach(function(answerList) {
         if(answerList.checked) {
-            response = answerList.id
+            response = answerList.id;
         }
-    })
-    return response
+    });
+    return response;
 }
 
 //finished quiz submit button function/ action
 submitBtn.addEventListener('click', function() {
-    const response = checkedResponse()
-    console.log(response)
+    const response = checkedResponse();
+    console.log(response);
     if(response) {
        
-        console.log(score)
-        console.log(currentQuestion)
-        console.log(quizQuestion.length)
+        console.log(score);
+        console.log(currentQuestion);
+        console.log(quizQuestion.length);
         if(currentQuestion < quizQuestion.length) { 
+            // if the answer is correct then the score increases and the next question appears
             if(response === quizQuestion[currentQuestion].correctAnswer) {
-                console.log("inside correctanswerfunction")
+                console.log("inside correctanswerfunction");
                 score++;
                 currentQuestion++;
                 verifyLoadQuestion();
             }
             else {
+                // if the answer is incorrect the timer decreases and the next question appears
                 console.log("insideelsestatement")
                 timeLeft = timeLeft - 10;
                 currentQuestion++;
@@ -133,6 +125,7 @@ submitBtn.addEventListener('click', function() {
             }
             
         } else {
+            // if the user finishes all questions the results are shown and leaderboard button is displayed
             test.innerHTML = `
             <h2>Your final score: ${score}/${quizQuestion.length}</h2>
             <a href="./finish.html" class="button">Leaderboard`
@@ -140,6 +133,8 @@ submitBtn.addEventListener('click', function() {
     }
 })
 
+
+// function allows for quiz to know if should move to next question / start or if it should end quiz
 function verifyLoadQuestion() {
     if(currentQuestion < quizQuestion.length){
 
